@@ -592,6 +592,17 @@ input:checked + .menu-switch-slider:before {
     font-size: 22px;
 }
 
+.helpsupport_container {
+  margin: auto auto auto auto;
+  display: none;
+  padding-right: 1em;
+}
+
+.helpsupport {
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
 /* File system */
 .fs-file-list table {
     width: 100%;
@@ -716,4 +727,38 @@ input:checked + .menu-switch-slider:before {
 #fs-space-free {
     width: auto;
     min-width: 2%;
+}
+.lang-choice{
+  margin:auto;
+  padding:5px;
+}
+.lang-icon{
+  margin-top:10%;
+  width:90%;
+  height:90%;
+  background-image: url("../img/globe-icon.png");
+}
+.lang-choice:hover{
+background-color:#ffcc33;
+color:darkblue;
+font-weight:bold;
+cursor: pointer;
+}
+.lang-choice:nth-last-of-type(1){
+  border-radius: 0 0 0.5rem 0.5rem;  
+}
+.lang-choice:nth-child(1){
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.language-drop{
+  margin:auto;
+}
+.language_container {
+  position: absolute;
+  margin: auto auto auto auto;
+  display: none;
+  width:6rem;
+  z-index: 999;
+  background-color: #f2f2f2;
+  border-radius: 0.5rem;
 }

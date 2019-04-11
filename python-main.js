@@ -823,6 +823,7 @@ function web_editor(config) {
 
     // Triggered when a user clicks the blockly button. Toggles blocks on/off.
     function doBlockly() {
+        
         var blockly = $('#blockly');
         if(blockly.is(':visible')) {
             dirty = false;
@@ -1293,6 +1294,16 @@ function web_editor(config) {
             }
         });
     }
+
+    //language choice on click handler
+    $(".lang-choice").on("click", function () {
+        document.getElementById("lang").remove();
+        config = createScriptTag($(this).attr("id"), loadLang);
+        $(".language_container").hide();
+        document.getElementById("lang").onload = function(){
+            config = loadLang();
+        }
+    });
 
     // Extracts the query string and turns it into an object of key/value
     // pairs.
