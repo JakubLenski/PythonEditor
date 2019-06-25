@@ -44,7 +44,7 @@ var language = {
           'blocks': "YOU HAVE UNSAVED CODE. USING BLOCKS WILL CHANGE YOUR CODE. YOU MAY LOSE YOUR CHANGES. DO YOU WANT TO CONTINUE?"
       },
       'code': {
-        'start': "# Add your Python code here. E.g.\n" +
+        'start': "# ADD YOUR PYTHON CODE HERE. E.g.\n" +
                  "from microbit import *\n\n\n" +
                  "while True:\n" +
                  "    display.scroll('Hello, World!')\n" +
@@ -68,45 +68,50 @@ var language = {
           'toggle-drop': 'OR DRAG AND DROP A FILE',
           'toggle-file': 'OR PICK A FILE'
       },
-      'buttons':{
-        'command-download':{
-          'title': 'DOWNLOAD A HEX FILE TO FLASH ONTO YOUR MICRO:BIT',
-          'label': 'DOWNLOAD'
+      'static-strings':{
+        'buttons':{
+          'command-download':{
+            'title': 'DOWNLOAD A HEX FILE TO FLASH ONTO YOUR MICRO:BIT',
+            'label': 'DOWNLOAD'
+          },
+          'command-save':{
+            'title':'SAVE YOUR PYTHON CODE TO YOUR COMPUTER',
+            'label':'SAVE'
+          },
+          'command-load':{
+            'title':'LOAD PYTHON CODE OR HEX FILE INTO THE EDITOR',
+            'label':'LOAD'
+          },
+          'command-blockly':{
+            'title':'CLICK TO CREATE CODE WITH BLOCKLY',
+            'label':'BLOCKLY'
+          },
+          'command-snippet':{
+            'title':'CLICK TO SELECT A SNIPPET (CODE SHORTCUT)',
+            'label':'SNIPPETS'
+          },
+          'command-help':{
+            'title':'DISCOVER HELPFUL RESOURCES',
+            'label':'HELP'
+          },
+          'command-language':{
+            'title':'SELECT A LANGUAGE',
+            'label':'LANGUAGE'
+          },
+          'command-share':{
+            'title':'CREATE A LINK TO SHARE YOUR SCRIPT',
+            'label':'SHARE'
+          },
+          'zoom-in':{
+            'title':'ZOOM IN'
+          },
+          'zoom-out':{
+            'title':'ZOOM OUT'
+          }
         },
-        'command-save':{
-          'title':'SAVE YOUR PYTHON CODE TO YOUR COMPUTER',
-          'label':'SAVE'
-        },
-        'command-load':{
-          'title':'LOAD PYTHON CODE OR HEX FILE INTO THE EDITOR',
-          'label':'LOAD'
-        },
-        'command-blockly':{
-          'title':'CLICK TO CREATE CODE WITH BLOCKLY',
-          'label':'BLOCKLY'
-        },
-        'command-snippet':{
-          'title':'CLICK TO SELECT A SNIPPET (CODE SHORTCUT)',
-          'label':'SNIPPETS'
-        },
-        'command-help':{
-          'title':'DISCOVER HELPFUL RESOURCES',
-          'label':'HELP'
-        },
-        'command-language':{
-          'title':'SELECT A LANGUAGE',
-          'label':'LANGUAGE'
-        },
-        'command-share':{
-          'title':'CREATE A LINK TO SHARE YOUR SCRIPT',
-          'label':'SHARE'
+      'script-name':{
+        'label': 'SCRIPT NAME'
         }
       }
-    },
-    'flags': {
-      'blocks': false,
-      'snippets': true,
-      'experimental': false,
-      'share': false
-    },
+    }
 };

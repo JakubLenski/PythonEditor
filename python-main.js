@@ -10,6 +10,9 @@ Lazy load JS script files.
 */
 function script(url) {
     var s = document.createElement('script');
+    if(id){
+        s.id = id;
+    }
     s.type = 'text/javascript';
     s.async = false;
     s.defer = true;
@@ -265,7 +268,7 @@ the editor to the DOM (web-page).
 
 See the comments in-line for more information.
 */
-function web_editor(config) {
+function web_editor(config, flags) {
     'use strict';
 
     // Global (useful for testing) instance of the ACE wrapper object
@@ -347,14 +350,14 @@ function web_editor(config) {
     // Checks for feature flags in the config object and shows/hides UI
     // elements as required.
     function setupFeatureFlags() {
-        if(config.flags.blocks) {
+        if(flags.blocks) {
             $("#command-blockly").removeClass('hidden');
             BLOCKS.init();
         }
-        if(config.flags.snippets) {
+        if(flags.snippets) {
             $("#command-snippet").removeClass('hidden');
         }
-        if(config.flags.share) {
+        if(flags.share) {
             $("#command-share").removeClass('hidden');
         }
         if(config.flags.experimental) {
@@ -366,8 +369,8 @@ function web_editor(config) {
         }
         // Update the help link to pass feature flag information.
         var helpAnchor = $("#help-link");
-        var featureQueryString = Object.keys(config.flags).filter(function(f) {
-            return config.flags[f];
+        var featureQueryString = Object.keys(flags).filter(function(f) {
+            return flags[f];
         }).map(function(f) {
             return encodeURIComponent(f) + "=true";
         }).join("&");
@@ -422,6 +425,19 @@ function web_editor(config) {
         EDITOR.ACE.gotoLine(EDITOR.ACE.session.getLength());
         EDITOR.enableAutocomplete(true);
         $('#menu-switch-autocomplete').prop("checked", true);
+        // If configured as experimental update editor background to indicate it
+        if(flags.experimental) {
+            EDITOR.ACE.renderer.scroller.style.backgroundImage = "url('static/img/experimental.png')";
+        }
+        // Configure the zoom related buttons.
+        $("#zoom-in").click(function (e) {
+            e.stopPropagation();
+            zoomIn();
+        });
+        $("#zoom-out").click(function (e) {
+            e.stopPropagation();
+            zoomOut();
+        });
         window.setTimeout(function () {
             // What to do if the user changes the content of the editor.
             EDITOR.on_change(function () {
@@ -1298,7 +1314,7 @@ function web_editor(config) {
     //language choice on click handler
     $(".lang-choice").on("click", function () {
         document.getElementById("lang").remove();
-        config = createScriptTag($(this).attr("id"), loadLang);
+        script("lang/" + $(this).attr("id") + ".js", "lang");
         $(".language_container").hide();
         document.getElementById("lang").onload = function(){
             config = loadLang();
@@ -1349,3 +1365,4 @@ function flashErrorClose() {
     $('#flashing-overlay-error').html("");
     $('#flashing-overlay-container').hide();
 }
+translateEmbedStrings(config);

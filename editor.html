@@ -226,6 +226,22 @@ Nicholas and Damien.
                 <a href="#" class="roundbutton action hidden" id="command-share"
                     tabindex="7"
                     title="Create a link to share your script">
+                <a href="#" class="roundbutton" id="command-language" tabindex="10" title="Select a language">
+                  <div class="roundsymbol">
+                    <i class="fa fa-globe"></i>
+                  </div>
+                  <div class="roundlabel"></div>
+                </a>
+              <div class="language_container">
+                <div class="language-drop">
+                  <div class="lang-choice" id="en">English</div>
+                  <div class="lang-choice" id="uppercase">Uppercase</div>
+                  <div class="lang-choice" id="pl">Polish</div>
+                </div>
+              </div>
+                <a href="#" class="roundbutton action"
+                    id="command-help" tabindex="6"
+                    title="Discover helpful resources">
                     <div class="roundsymbol">
                         <i class="fa fa-share-alt"></i>
                     </div>
@@ -308,7 +324,7 @@ Nicholas and Damien.
               </div>
             </div>
             <div class="vbox action" id="script-box">
-                <label for="script-name">Script Name</label>
+                <label id="script-name-label" for="script-name">Script Name</label>
                 <input id="script-name" class="flex1">
             </div>
           </div>
@@ -354,10 +370,15 @@ Nicholas and Damien.
         <script src="static/js/translation.js"></script>
   <script>
       // Call the web_editor function to start the editor running.
-          document.getElementById("lang").onload = function(){
-            web_editor(language);
-            translateEmbedStrings(language);
-          };
+          window.addEventListener('load', function(){
+            var flags = {
+              blocks: false,
+              snippets: true,
+              experimental: false,
+              share: false
+            };
+            web_editor(language, flags);
+          });
   </script>
 <xml id="blockly-toolbox" style="display: none">
   <category name="Accelerometer" colour="0">

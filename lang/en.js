@@ -68,45 +68,50 @@
             'toggle-drop': 'Or drag and drop a file',
             'toggle-file': 'Or pick a file'
           },
-          'buttons':{
-            'command-download':{
-              'title': 'Download a hex file to flash onto your micro:bit',
-              'label': 'Download'
+          'static-strings':{
+            'buttons':{
+              'command-download':{
+                'title': 'Download a hex file to flash onto your micro:bit',
+                'label': 'Download'
+              },
+              'command-save':{
+                'title':'Save your Python code to your computer',
+                'label':'Save'
+              },
+              'command-load':{
+                'title':'Load Python code or hex file into the editor',
+                'label':'Load'
+              },
+              'command-blockly':{
+                'title':'Click to create code with blockly',
+                'label':'Blockly'
+              },
+              'command-snippet':{
+                'title':'Click to select a snippet (code shortcut)',
+                'label':'Snippets'
+              },
+              'command-help':{
+                'title':'Discover helpful resources',
+                'label':'Help'
+              },
+              'command-language':{
+                'title':'Select a language',
+                'label':'Language'
+              },
+              'command-share':{
+                'title':'Create a link to share your script',
+                'label':'Share'
+              },
+              'zoom-in':{
+                'title':'Zoom in'
+              },
+              'zoom-out':{
+                'title':'Zoom out'
+              }
             },
-            'command-save':{
-              'title':'Save your Python code to your computer',
-              'label':'Save'
-            },
-            'command-load':{
-              'title':'Load Python code or hex file into the editor',
-              'label':'Load'
-            },
-            'command-blockly':{
-              'title':'Click to create code with blockly',
-              'label':'Blockly'
-            },
-            'command-snippet':{
-              'title':'Click to select a snippet (code shortcut)',
-              'label':'Snippets'
-            },
-            'command-help':{
-              'title':'Discover helpful resources',
-              'label':'Help'
-            },
-            'command-language':{
-              'title':'Select a language',
-              'label':'Language'
-            },
-            'command-share':{
-              'title':'Create a link to share your script',
-              'label':'Share'
+          'script-name':{
+            'label': 'Script Name'
             }
           }
-        },
-        'flags': {
-          'blocks': false,
-          'snippets': true,
-          'experimental': false,
-          'share': false
-        },
+        }
     };
