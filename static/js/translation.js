@@ -3,7 +3,6 @@
 languageStartup();
 
 function languageStartup(){
-<<<<<<< HEAD
     var url = window.location.href;
     var langChoice = url.split('#lang=')[1] || "en";
     createScriptTag(langChoice);
@@ -11,21 +10,12 @@ function languageStartup(){
 
 
 function createScriptTag(langChoice){
-    var languageScript = document.createElement("script");
-    languageScript.src = "static/js/" + langChoice + ".js";
-    languageScript.id = "lang";
-    document.getElementsByTagName("body")[0].appendChild(languageScript);
-};
-
-=======
-    var urlParams = new URLSearchParams(window.location.search);
-    var langChoice = urlParams.get("lang") || "en";
+    var langChoice = getUrlParam("lang") || "en";
     let langPath = "lang/" + langChoice + ".js";
     script(langPath, "lang");
 };
 
 //Moves the language dropdown box to an appropriate position in relation to the language button
->>>>>>> Improved query params, separate flag obj, changes for PR
 function formatLangDropdown(){
     if($(".language_container").offset().left !== $("#command-language").offset().left){
         $(".language_container").css("top", $("#command-language").offset().top + $("#toolbox").height() + 10);
@@ -36,14 +26,6 @@ function formatLangDropdown(){
     }
 };
 
-<<<<<<< HEAD
-//dropdown menu on click handler
-$("#command-language").on("click", function () {
-    if ($(".language_container").is(":visible")) {
-        $(".language_container").hide();
-    }
-    else {
-=======
 
 document.body.addEventListener('click',function(event) {
     // Close lang dropdown if the click isn't on a descendent of #command-language
@@ -57,7 +39,6 @@ $("#command-language").on("click", function () {
     if($(".language_container").is(":visible")){
         $(".language_container").hide();
     }else{
->>>>>>> Improved query params, separate flag obj, changes for PR
         formatLangDropdown();
         $(".language_container").show();
     }
