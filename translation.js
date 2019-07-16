@@ -60,8 +60,8 @@ $("#command-help").on("click",function(){
 
 
 function loadLang(){
-    translateEmbedStrings(language);
-    return language;
+    translateEmbedStrings({'translate': language});
+    return {'translate': language};
 }
 
 

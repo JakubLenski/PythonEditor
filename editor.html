@@ -377,17 +377,19 @@ Nicholas and Damien.
             type="application/javascript"></script>
 >>>>>>> Extracted url parameter parsing func.
         <script>vex.defaultOptions.className = 'vex-theme-wireframe';</script>
-        <script src="static/js/translation.js"></script>
+        <script src="translation.js"></script>
   <script>
       // Call the web_editor function to start the editor running.
           window.addEventListener('load', function(){
-            var flags = {
-              blocks: false,
-              snippets: true,
-              experimental: false,
-              share: false
-            };
-            web_editor(language, flags);
+            web_editor({
+                'translate': language,
+                'flags': {	
+                    'blocks': false,	
+                    'snippets': true,	
+                    'experimental': false,	
+                    'share': false	
+                },
+            });
           });
   </script>
 <xml id="blockly-toolbox" style="display: none">

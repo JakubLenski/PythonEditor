@@ -268,7 +268,7 @@ the editor to the DOM (web-page).
 
 See the comments in-line for more information.
 */
-function web_editor(config, flags) {
+function web_editor(config) {
     'use strict';
 
     // Global (useful for testing) instance of the ACE wrapper object
@@ -350,14 +350,14 @@ function web_editor(config, flags) {
     // Checks for feature flags in the config object and shows/hides UI
     // elements as required.
     function setupFeatureFlags() {
-        if(flags.blocks) {
+        if(config.flags.blocks) {
             $("#command-blockly").removeClass('hidden');
             BLOCKS.init();
         }
-        if(flags.snippets) {
+        if(config.flags.snippets) {
             $("#command-snippet").removeClass('hidden');
         }
-        if(flags.share) {
+        if(config.flags.share) {
             $("#command-share").removeClass('hidden');
         }
         if(config.flags.experimental) {
@@ -369,8 +369,8 @@ function web_editor(config, flags) {
         }
         // Update the help link to pass feature flag information.
         var helpAnchor = $("#help-link");
-        var featureQueryString = Object.keys(flags).filter(function(f) {
-            return flags[f];
+        var featureQueryString = Object.keys(config.flags).filter(function(f) {
+            return config.flags[f];
         }).map(function(f) {
             return encodeURIComponent(f) + "=true";
         }).join("&");
@@ -426,7 +426,7 @@ function web_editor(config, flags) {
         EDITOR.enableAutocomplete(true);
         $('#menu-switch-autocomplete').prop("checked", true);
         // If configured as experimental update editor background to indicate it
-        if(flags.experimental) {
+        if(config.flags.experimental) {
             EDITOR.ACE.renderer.scroller.style.backgroundImage = "url('static/img/experimental.png')";
         }
         // Configure the zoom related buttons.
@@ -1317,7 +1317,9 @@ function web_editor(config, flags) {
         script("lang/" + $(this).attr("id") + ".js", "lang");
         $(".language_container").hide();
         document.getElementById("lang").onload = function(){
+            var flags = config.flags; //carry over flags to new config
             config = loadLang();
+            config["flags"] = flags;
         }
     });
 

@@ -1,5 +1,4 @@
     var language = {
-       'translate': {
           'code_snippets': {
             'title': 'Code Snippets',
             'description': "Code snippets are short blocks of code to re-use in your own programs. There are snippets for most common things you'll want to do using MicroPython.",
@@ -113,5 +112,4 @@
             'label': 'Script Name'
             }
           }
-        }
     };

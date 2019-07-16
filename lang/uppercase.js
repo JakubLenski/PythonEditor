@@ -1,5 +1,4 @@
 var language = {
-    'translate': {
         'code_snippets': {
             'title': 'CODE SNIPPETS',
             'description': "CODE SNIPPETS ARE SHORT BLOCKS OF CODE TO RE-USE IN YOUR OWN PROGRAMS. THERE ARE SNIPPETS FOR MOST COMMON THINGS YOU'LL WANT TO DO USING MICROPYTHON.",
@@ -113,5 +112,4 @@ var language = {
         'label': 'SCRIPT NAME'
         }
       }
-    }
 };
