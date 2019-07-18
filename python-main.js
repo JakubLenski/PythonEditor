@@ -425,19 +425,6 @@ function web_editor(config) {
         EDITOR.ACE.gotoLine(EDITOR.ACE.session.getLength());
         EDITOR.enableAutocomplete(true);
         $('#menu-switch-autocomplete').prop("checked", true);
-        // If configured as experimental update editor background to indicate it
-        if(config.flags.experimental) {
-            EDITOR.ACE.renderer.scroller.style.backgroundImage = "url('static/img/experimental.png')";
-        }
-        // Configure the zoom related buttons.
-        $("#zoom-in").click(function (e) {
-            e.stopPropagation();
-            zoomIn();
-        });
-        $("#zoom-out").click(function (e) {
-            e.stopPropagation();
-            zoomOut();
-        });
         window.setTimeout(function () {
             // What to do if the user changes the content of the editor.
             EDITOR.on_change(function () {
@@ -479,7 +466,7 @@ function web_editor(config) {
         // Focus on the element with TAB-STATE=1
         $("#command-download").focus();
     }
-
+    
     // Sets up the file system and adds the initial main.py
     function setupFilesystem() {
         micropythonFs = new microbitFs.MicropythonFsHex($('#firmware').text());
@@ -839,7 +826,6 @@ function web_editor(config) {
 
     // Triggered when a user clicks the blockly button. Toggles blocks on/off.
     function doBlockly() {
-        
         var blockly = $('#blockly');
         if(blockly.is(':visible')) {
             dirty = false;

@@ -34,38 +34,44 @@
           'alerts': {
             'download': 'Safari has a bug that means your work will be downloaded as an un-named file. Please rename it to something ending in .hex. Alternatively, use a browser such as Firefox or Chrome. They do not suffer from this bug.',
             'save': 'Safari has a bug that means your work will be downloaded as an un-named file. Please rename it to something ending in .py. Alternatively, use a browser such as Firefox or Chrome. They do not suffer from this bug.',
-            'length': 'Oops! Your script is too long given the limited memory on the device.',
+            'load_code': 'Oops! Could not load the code into the hex file.',
             'unrecognised_hex': "Sorry, we couldn't recognise this file",
-            'snippets': 'Snippets are disabled when blockly is enabled.'
+            'snippets': 'Snippets are disabled when blockly is enabled.',
+            'error': 'Error:\n',
+            'empty': 'The Python file does not have any content.',
+            'no_python': 'Could not find valid Python code in the hex file.',
+            'no_script': 'Hex file does not contain a Python script.',
+            'no_main': 'The hex file does not contain a main.py file.',
+            'cant_add_file': 'Could not add file to the system:',
+            'module_added': 'The "{{module_name}}" module has been added to the filesystem.',
+            'module_out_of_space': 'Could not add file to the system as there is no storage space left.'
           },
           'confirms': {
             'quit': "Some of your changes have not been saved. Quit anyway?",
-            'blocks': "You have unsaved code. Using blocks will change your code. You may lose your changes. Do you want to continue?"
+            'blocks': "You have unsaved code. Using blocks will change your code. You may lose your changes. Do you want to continue?",
+            'replace_main': 'Adding a main.py file will replace the code in the editor!',
+            'replace_file': 'Do you want to replace the "{{file_name}}" file?',
+            'replace_module': 'Do you want to replace the "{{module_name}}" module?'
           },
           'code': {
             'start': "# Add your Python code here. E.g.\n" +
-                     "from microbit import *\n\n\n" +
-                     "while True:\n" +
-                     "    display.scroll('Hello, World!')\n" +
-                     "    display.show(Image.HEART)\n" +
-                     "    sleep(2000)\n"
-          },
-          'drop': {
-            'python': 'Extracted from a Python file',
-            'hex': 'Extracted from a hex file'
-          },
-          'messagebar': {
-            'title': 'This editor is out of date!',
-            'link': 'Click here',
-            'instructions': 'to open the latest version.',
-            'close': 'Hide'
+                    "from microbit import *\n\n\n" +
+                    "while True:\n" +
+                    "    display.scroll('Hello, World!')\n" +
+                    "    display.show(Image.HEART)\n" +
+                    "    sleep(2000)\n"
           },
           'load': {
-            'title': 'Load Script or HEX file',
+            'save-hex' : 'Download Hex',
+            'show-files' : 'Show Files',
+            'load-title': 'Load/Save',
+            'program-title': function() {
+              return $("#script-name").val();
+            },
             'instructions': 'Drag and drop a .hex or .py file in here to open it.',
             'submit': 'Load',
-            'toggle-drop': 'Or drag and drop a file',
-            'toggle-file': 'Or pick a file'
+            'toggle-file': 'Or browse for a file',
+            'fs-add-file': 'Add file'
           },
           'static-strings':{
             'buttons':{

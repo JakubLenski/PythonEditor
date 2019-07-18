@@ -26,21 +26,32 @@ var language = {
             'shortener': 'THIS IS A SHORT VERSION OF THE LINK:'
         },
         'decrypt': {
-            'title': 'DECRYPT SOURCE CODE',
-            'instructions': 'ENTER A PASSWORD TO DECRYPT THE SOURCE CODE.',
-            'passphrase': 'PASSWORD: ',
-            'button': 'DECRYPT'
+          'title': 'DECRYPT SOURCE CODE',
+          'instructions': 'ENTER A PASSWORD TO DECRYPT THE SOURCE CODE.',
+          'passphrase': 'PASSWORD: ',
+          'button': 'DECRYPT'
         },
         'alerts': {
             'download': 'SAFARI HAS A BUG THAT MEANS YOUR WORK WILL BE DOWNLOADED AS AN UN-NAMED FILE. PLEASE RENAME IT TO SOMETHING ENDING IN .HEX. ALTERNATIVELY, USE A BROWSER SUCH AS FIREFOX OR CHROME. THEY DO NOT SUFFER FROM THIS BUG.',
             'save': 'SAFARI HAS A BUG THAT MEANS YOUR WORK WILL BE DOWNLOADED AS AN UN-NAMED FILE. PLEASE RENAME IT TO SOMETHING ENDING IN .PY. ALTERNATIVELY, USE A BROWSER SUCH AS FIREFOX OR CHROME. THEY DO NOT SUFFER FROM THIS BUG.',
-            'length': 'OOPS! YOUR SCRIPT IS TOO LONG GIVEN THE LIMITED MEMORY ON THE DEVICE.',
-            'unrecognised_hex': "SORRY, WE COULDN'T RECOGNISE THIS FILE",
-            'snippets': 'SNIPPETS ARE DISABLED WHEN BLOCKLY IS ENABLED.'
+            'load_code': 'Oops! Could not load the code into the hex file.',
+            'unrecognised_hex': "Sorry, we couldn't recognise this file",
+            'snippets': 'Snippets are disabled when blockly is enabled.',
+            'error': 'Error:\n',
+            'empty': 'The Python file does not have any content.',
+            'no_python': 'Could not find valid Python code in the hex file.',
+            'no_script': 'Hex file does not contain a Python script.',
+            'no_main': 'The hex file does not contain a main.py file.',
+            'cant_add_file': 'Could not add file to the system:',
+            'module_added': 'The "{{module_name}}" module has been added to the filesystem.',
+            'module_out_of_space': 'Could not add file to the system as there is no storage space left.'
         },
         'confirms': {
           'quit': "SOME OF YOUR CHANGES HAVE NOT BEEN SAVED. QUIT ANYWAY?",
-          'blocks': "YOU HAVE UNSAVED CODE. USING BLOCKS WILL CHANGE YOUR CODE. YOU MAY LOSE YOUR CHANGES. DO YOU WANT TO CONTINUE?"
+          'blocks': "YOU HAVE UNSAVED CODE. USING BLOCKS WILL CHANGE YOUR CODE. YOU MAY LOSE YOUR CHANGES. DO YOU WANT TO CONTINUE?",
+          'replace_main': 'Adding a main.py file will replace the code in the editor!',
+          'replace_file': 'Do you want to replace the "{{file_name}}" file?',
+          'replace_module': 'Do you want to replace the "{{module_name}}" module?'
       },
       'code': {
         'start': "# ADD YOUR PYTHON CODE HERE. E.g.\n" +
@@ -50,22 +61,17 @@ var language = {
                  "    display.show(Image.HEART)\n" +
                  "    sleep(2000)\n"
       },
-      'drop': {
-          'python': 'EXTRACTED FROM A PYTHON FILE',
-          'hex': 'EXTRACTED FROM A HEX FILE'
-      },
-      'messagebar': {
-          'title': 'THIS EDITOR IS OUT OF DATE!',
-          'lnk': 'CLICK HERE',
-          'instructions': 'TO OPEN THE LATEST VERSION.',
-          'close': 'HIDE'
-      },
       'load': {
-          'title': 'LOAD SCRIPT OR HEX FILE',
-          'instructions': 'DRAG AND DROP A .HEX OR .PY FILE IN HERE TO OPEN IT.',
-          'submit': 'LOAD',
-          'toggle-drop': 'OR DRAG AND DROP A FILE',
-          'toggle-file': 'OR PICK A FILE'
+        'save-hex' : 'DOWNLOAD HEX',
+        'show-files' : 'SHOW FILES',
+        'load-title': 'LOAD/SAVE',
+        'program-title': function() {
+          return $("#script-name").val();
+        },
+        'instructions': 'DRAG AND DROP A .HEX OR .PY FILE IN HERE TO OPEN IT.',
+        'submit': 'LOAD',
+        'toggle-file': 'OR BROWSE FOR A FILE',
+        'fs-add-file': 'ADD FILE'
       },
       'static-strings':{
         'buttons':{
