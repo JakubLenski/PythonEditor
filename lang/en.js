@@ -73,13 +73,21 @@
                 'title': 'Download a hex file to flash onto your micro:bit',
                 'label': 'Download'
               },
-              'command-save':{
-                'title':'Save your Python code to your computer',
-                'label':'Save'
+              'command-files':{
+                'title':'Load/Save files',
+                'label':'Load/Save'
               },
-              'command-load':{
-                'title':'Load Python code or hex file into the editor',
-                'label':'Load'
+              'command-serial':{
+                'title':'Connect your micro:bit via serial',
+                'label':'Open Serial'
+              },
+              'command-connect':{
+                'title':'Connect to your micro:bit',
+                'label':'Connect'
+              },
+              'command-options':{
+                'title':'Change the editor settings',
+                'label':'Options'
               },
               'command-blockly':{
                 'title':'Click to create code with blockly',

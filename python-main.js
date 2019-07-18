@@ -8,7 +8,7 @@ everything does.)
 /*
 Lazy load JS script files.
 */
-function script(url) {
+function script(url, id) {
     var s = document.createElement('script');
     if(id){
         s.id = id;
@@ -1354,6 +1354,7 @@ function web_editor(config) {
     setupFeatureFlags();
     setupEditor(qs, migration);
     setupButtons();
+    translateEmbedStrings(config);
     document.addEventListener('DOMContentLoaded', function() {
         // Firmware at the end of the HTML file has to be loaded first
         setupFilesystem();
@@ -1367,4 +1368,3 @@ function flashErrorClose() {
     $('#flashing-overlay-error').html("");
     $('#flashing-overlay-container').hide();
 }
-translateEmbedStrings(config);

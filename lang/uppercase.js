@@ -73,13 +73,21 @@ var language = {
             'title': 'DOWNLOAD A HEX FILE TO FLASH ONTO YOUR MICRO:BIT',
             'label': 'DOWNLOAD'
           },
-          'command-save':{
-            'title':'SAVE YOUR PYTHON CODE TO YOUR COMPUTER',
-            'label':'SAVE'
+          'command-files':{
+            'title':'LOAD/SAVE FILES',
+            'label':'LOAD/SAVE'
           },
-          'command-load':{
-            'title':'LOAD PYTHON CODE OR HEX FILE INTO THE EDITOR',
-            'label':'LOAD'
+          'command-serial':{
+            'title':'CONNECT YOUR MICRO:BIT VIA SERIAL',
+            'label':'OPEN SERIAL'
+          },
+          'command-connect':{
+            'title':'CONNECT TO YOUR MICRO:BIT',
+            'label':'CONNECT'
+          },
+          'command-options':{
+            'title':'CHANGE THE EDITOR SETTINGS',
+            'label':'OPTIONS'
           },
           'command-blockly':{
             'title':'CLICK TO CREATE CODE WITH BLOCKLY',

@@ -273,26 +273,6 @@ Nicholas and Damien.
                         </div>
                     </div>
                 </div>
-                <a href="#" class="roundbutton action" id="command-help"
-                    tabindex="9"
-                    title="Discover helpful resources">
-                    <div class="roundsymbol">
-                        <i class="fa fa-question"></i>
-                    </div>
-                    <div class="roundlabel"></div>
-                </a>
-                <div class="buttons_menu_container hidden" id="helpsupport_container">
-                    <div class="buttons_menu_lhs">
-                        <div class="buttons_menu_item"><a id="docs-link" class="action" title="View the documentation for MicroPython" href="https://microbit-micropython.readthedocs.io/" target="_blank">Documentation</a></div>
-                        <div class="buttons_menu_item"><a id="help-link" class="action" title="Open help for this editor in a new tab" href="help.html" target="_blank" >Help</a></div>
-                        <div class="buttons_menu_item"><a id="support-link" class="action" title="Get support for your micro:bit in a new tab" href="https://support.microbit.org/support/home" target="_blank">Support</a></div>
-                        <div class="buttons_menu_item hidden" id="known-issues"><a id="issues-link" class="action" title="View open issues for the Python Editor in GitHub" href="https://github.com/bbcmicrobit/PythonEditor/issues" target="_blank">Issue Tracker</a></div>
-                    </div>
-                    <div class="buttons_menu_rhs">
-                        <div class="buttons_menu_item">Editor Version: <script>document.write(EDITOR_VERSION);</script></div>
-                        <div class="buttons_menu_item">MicroPython Version: <script>document.write(UPY_VERSION);</script></div>
-                    </div>
-                </div>
                 <div id="script-icons" class="vbox">
                     <a class="holder zoomer action" tabindex="10" id="zoom-in"
                         href="#">
@@ -309,19 +289,6 @@ Nicholas and Damien.
                         </div>
                     </a>
                 </div>
-                <a href="#" class="roundbutton" id="command-language" tabindex="10" title="Select a language">
-                  <div class="roundsymbol">
-                   <img class="lang-icon" src="static/img/globe-icon.png">
-                  </div>
-                  <div class="roundlabel"></div>
-                </a>
-              <div class="language_container">
-                <div class="language-drop">
-                  <div class="lang-choice" id="en">English</div>
-                  <div class="lang-choice" id="uppercase">Uppercase</div>
-                  <div class="lang-choice" id="pl">Polish</div>
-                </div>
-              </div>
             </div>
             <div class="vbox action" id="script-box">
                 <label id="script-name-label" for="script-name">Script Name</label>
@@ -361,35 +328,31 @@ Nicholas and Damien.
         <script src="static/js/ResizeSensor.js"></script>
         <script src="static/js/ElementQueries.js"></script>
         <script src="static/js/custom-event-polyfill.js"></script>
-<<<<<<< HEAD
         <script src="static/js/lzma-d.js"></script>
         <script src="static/js/base64.js"></script>
         <script src="static/js/microbit-fs.umd.js"></script>
         <script src="micropythonapi.js"></script>
         <script src="python-main.js"></script>
-=======
-	    <script src="lzma/lzma_worker.js"></script>
-	    <script src="base64-js/base64.js"></script>
-        <script src="hexlify.js"
-            type="application/javascript"></script>
         <script src="static/js/urlparser.js"></script>
-        <script src="python-main.js"
-            type="application/javascript"></script>
->>>>>>> Extracted url parameter parsing func.
         <script>vex.defaultOptions.className = 'vex-theme-wireframe';</script>
         <script src="translation.js"></script>
   <script>
       // Call the web_editor function to start the editor running.
           window.addEventListener('load', function(){
-            web_editor({
-                'translate': language,
-                'flags': {	
-                    'blocks': false,	
-                    'snippets': true,	
-                    'experimental': false,	
-                    'share': false	
-                },
-            });
+            var flags = {
+              blocks: false,
+              snippets: true,
+              experimental: false,
+              share: false,
+              options: true
+            };
+
+            var config = {
+              microPythonApi: microPythonApi,
+              translate: language,
+              flags: flags
+            };
+            web_editor(config);
           });
   </script>
 <xml id="blockly-toolbox" style="display: none">

@@ -69,7 +69,7 @@ function translateEmbedStrings(language){
     var buttons = language["translate"]["static-strings"]["buttons"];
     $(".roundbutton").each(function(object,value){
         let button_id = $(value).attr("id");
-        $(value).attr("title",buttons[button_id]["title"]);
+        $(value).attr("title", buttons[button_id]["title"]);
         $(value).children(":last").text(buttons[button_id]["label"]);
     });
     $(".zoomer").each((object,value) => {
