@@ -263,6 +263,37 @@ function blocks() {
 }
 
 /*
+ * Please add description here.
+ */
+function translations() {
+    'use strict';
+
+    var returnObj = {};
+
+    returnObj.updateLang = function() {
+        translateEmbedStrings({'translate': language});
+        return {'translate': language};
+    };
+
+    function translateEmbedStrings(language){
+        var buttons = language["translate"]["static-strings"]["buttons"];
+        $(".roundbutton").each(function(object,value){
+            let button_id = $(value).attr("id");
+            $(value).attr("title", buttons[button_id]["title"]);
+            $(value).children(":last").text(buttons[button_id]["label"]);
+        });
+        $(".zoomer").each((object,value) => {
+            let button_id = $(value).attr("id");
+            $(value).find("i").attr("title",buttons[button_id]["title"]);
+        });
+        $("#script-name-label").text(language["translate"]["static-strings"]["script-name"]["label"]);
+        return true;
+    }
+
+    return returnObj;
+}
+
+/*
 The following code contains the various functions that connect the behaviour of
 the editor to the DOM (web-page).
 
@@ -275,6 +306,7 @@ function web_editor(config) {
     window.EDITOR = pythonEditor('editor', config.microPythonApi);
 
     var BLOCKS = blocks();
+    var TRANSLATIONS = translations();
 
     // Represents the REPL terminal
     var REPL = null;
@@ -1244,8 +1276,18 @@ function web_editor(config) {
         $("#request-repl").click(function () {
             daplink.serialWrite("\x03");
         });
+        $("#command-language").click(function (e) {
+            // Hide any other open menus and show/hide options menu
+            $('#helpsupport_container').addClass('hidden');
+            $('#options_container').addClass('hidden');
+            $('#language_container').toggleClass('hidden');
+            formatMenuContainer('command-language', 'language_container');
+            // Stop immediate closure
+            e.stopImmediatePropagation();
+        });
         $("#command-options").click(function (e) {
             // Hide any other open menus and show/hide options menu
+            $('#language_container').addClass('hidden');
             $('#helpsupport_container').addClass('hidden');
             $('#options_container').toggleClass('hidden');
             formatMenuContainer('command-options', 'options_container');
@@ -1254,6 +1296,7 @@ function web_editor(config) {
         });
         $("#command-help").click(function (e) {
             // Hide any other open menus and show/hide help menu
+            $('#language_container').addClass('hidden');
             $('#options_container').addClass('hidden');
             $('#helpsupport_container').toggleClass('hidden');
             formatMenuContainer('command-help', 'helpsupport_container');
@@ -1267,6 +1310,17 @@ function web_editor(config) {
         $("#zoom-out").click(function (e) {
             zoomOut();
             e.stopPropagation();
+        });
+
+        $(".lang-choice").on("click", function () {
+            document.getElementById("lang").remove();
+            script("lang/" + $(this).attr("id") + ".js", "lang");
+            $("#language_container").hide();
+            document.getElementById("lang").onload = function(){
+                var flags = config.flags; //carry over flags to new config
+                config = TRANSLATIONS.updateLang();
+                config["flags"] = flags;
+            }
         });
 
         $('#menu-switch-autocomplete').on('change', function() {
@@ -1296,18 +1350,6 @@ function web_editor(config) {
             }
         });
     }
-
-    //language choice on click handler
-    $(".lang-choice").on("click", function () {
-        document.getElementById("lang").remove();
-        script("lang/" + $(this).attr("id") + ".js", "lang");
-        $(".language_container").hide();
-        document.getElementById("lang").onload = function(){
-            var flags = config.flags; //carry over flags to new config
-            config = loadLang();
-            config["flags"] = flags;
-        }
-    });
 
     // Extracts the query string and turns it into an object of key/value
     // pairs.
@@ -1340,7 +1382,7 @@ function web_editor(config) {
     setupFeatureFlags();
     setupEditor(qs, migration);
     setupButtons();
-    translateEmbedStrings(config);
+    TRANSLATIONS.updateLang();
     document.addEventListener('DOMContentLoaded', function() {
         // Firmware at the end of the HTML file has to be loaded first
         setupFilesystem();
