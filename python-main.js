@@ -268,29 +268,33 @@ function blocks() {
 function translations() {
     'use strict';
 
-    var returnObj = {};
+    function updateLang(newLang, callback) {
+        document.getElementById('lang').remove();
+        script('lang/' + newLang + '.js', 'lang');
+        document.getElementById('lang').onload = function() {
+            translateEmbedStrings(language);
+            callback(language);
+        }
+    }
 
-    returnObj.updateLang = function() {
-        translateEmbedStrings({'translate': language});
-        return {'translate': language};
-    };
-
-    function translateEmbedStrings(language){
-        var buttons = language["translate"]["static-strings"]["buttons"];
-        $(".roundbutton").each(function(object,value){
-            let button_id = $(value).attr("id");
+    function translateEmbedStrings(language) {
+        var buttons = language["static-strings"]["buttons"];
+        $(".roundbutton").each(function(object, value){
+            var button_id = $(value).attr("id");
             $(value).attr("title", buttons[button_id]["title"]);
             $(value).children(":last").text(buttons[button_id]["label"]);
         });
-        $(".zoomer").each((object,value) => {
-            let button_id = $(value).attr("id");
+        $(".zoomer").each((object, value) => {
+            var button_id = $(value).attr("id");
             $(value).find("i").attr("title",buttons[button_id]["title"]);
         });
-        $("#script-name-label").text(language["translate"]["static-strings"]["script-name"]["label"]);
-        return true;
+        $("#script-name-label").text(language["static-strings"]["script-name"]["label"]);
     }
 
-    return returnObj;
+    return {
+        'updateLang': updateLang,
+        'translateEmbedStrings': translateEmbedStrings,
+    };
 }
 
 /*
@@ -1312,15 +1316,11 @@ function web_editor(config) {
             e.stopPropagation();
         });
 
-        $(".lang-choice").on("click", function () {
-            document.getElementById("lang").remove();
-            script("lang/" + $(this).attr("id") + ".js", "lang");
-            $("#language_container").hide();
-            document.getElementById("lang").onload = function(){
-                var flags = config.flags; //carry over flags to new config
-                config = TRANSLATIONS.updateLang();
-                config["flags"] = flags;
-            }
+        $(".lang-choice").on("click", function() {
+            $("#language_container").addClass('hidden');
+            TRANSLATIONS.updateLang($(this).attr('id'), function(translations) {
+                config.translate = translations;
+            });
         });
 
         $('#menu-switch-autocomplete').on('change', function() {
@@ -1382,7 +1382,7 @@ function web_editor(config) {
     setupFeatureFlags();
     setupEditor(qs, migration);
     setupButtons();
-    TRANSLATIONS.updateLang();
+    TRANSLATIONS.translateEmbedStrings(config.translate);
     document.addEventListener('DOMContentLoaded', function() {
         // Firmware at the end of the HTML file has to be loaded first
         setupFilesystem();
